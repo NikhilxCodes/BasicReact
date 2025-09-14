@@ -7,6 +7,7 @@ const App = () => {
     <>
       <div className='w-full h-screen bg-zinc-300'>
         <Navbar/>
+        
         <div className='px-20 flex gap-10 mt-8 flex-wrap'>
           <Cards/>
         </div>
