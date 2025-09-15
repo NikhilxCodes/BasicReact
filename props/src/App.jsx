@@ -3,13 +3,34 @@ import Cards from './Components/Cards'
 import Navbar from './Components/Navbar'
 
 const App = () => {
+  const data=[
+    {image:"https://plus.unsplash.com/premium_photo-1680550633623-8dc4548fb751?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",name:"pal do pal",artist:"Nikhil",added:false },
+    {image:"https://images.unsplash.com/photo-1598387846148-47e82ee120cc?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",name:"humsafar",artist:"shayam",added:false },
+    {image:"https://plus.unsplash.com/premium_photo-1682125232467-8fcf48869840?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",name:"ek mein aur",artist:"rahul",added:false },
+    {image:"https://images.unsplash.com/photo-1559743345-24713f59f5e3?q=80&w=1526&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",name:"suraj hua",artist:"ram",added:false }
+  ];
+  const[songData,setSongData]=useState(data);
+
+  const handleClick=(cardindex)=>{
+    setSongData((prev)=>{
+      // it will return a array to work
+      return prev.map((obj,index)=>{
+        if(index===cardindex){
+          return {...obj,added:!obj.added}
+        }
+        return obj;
+      })
+    })
+  } 
+
   return ( 
     <>
       <div className='w-full h-screen bg-zinc-300'>
-        <Navbar/>
-        
+        <Navbar data={songData}/>
         <div className='px-20 flex gap-10 mt-8 flex-wrap'>
-          <Cards/>
+          {songData.map((obj,index)=>(
+            <Cards data={obj} handleClick={handleClick} cardindex={index} />
+          ))}
         </div>
       </div>
     </>
