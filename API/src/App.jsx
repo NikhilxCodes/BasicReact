@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React from 'react'
 import { Link, Route, Routes as Routes } from 'react-router-dom'
 import Home from './components/Home'
 import Show from './components/Show'
